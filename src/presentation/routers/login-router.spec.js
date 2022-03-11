@@ -1,7 +1,11 @@
 class LoginRouter {
   route (httpRequest) {
+    const httpRequestIsInvalid = !httpRequest || !httpRequest.body
+    if (httpRequestIsInvalid) return { statusCode: 500 }
+
     const { email, password } = httpRequest.body
-    if (!email || !password) return { statusCode: 400 }
+    const emailOrPasswordNotProvided = !email || !password
+    if (emailOrPasswordNotProvided) return { statusCode: 400 }
   }
 }
 
@@ -36,5 +40,28 @@ describe('Login Router', () => {
 
     // assert
     expect(httpResponse.statusCode).toBe(400)
+  })
+
+  test('Should return 500 if no httpRequest is provided', () => {
+    // arrange
+    const loginRouter = new LoginRouter()
+
+    // act
+    const httpResponse = loginRouter.route()
+
+    // assert
+    expect(httpResponse.statusCode).toBe(500)
+  })
+
+  test('Should return 500 if httpRequest has no body', () => {
+    // arrange
+    const loginRouter = new LoginRouter()
+    const httpRequestWithoutBody = {}
+
+    // act
+    const httpResponse = loginRouter.route(httpRequestWithoutBody)
+
+    // assert
+    expect(httpResponse.statusCode).toBe(500)
   })
 })
