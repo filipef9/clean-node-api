@@ -6,9 +6,6 @@
   "scripts": {
     "test": "jest"
   },
-  "lint-staged": {
-    "*.js": ["standard --fix"]
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/filipef9/clean-node-api.git"
