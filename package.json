@@ -7,10 +7,7 @@
     "test": "jest"
   },
   "lint-staged": {
-    "*.js": [
-      "standard --fix",
-      "git add"
-    ]
+    "*.js": ["standard --fix"]
   },
   "repository": {
     "type": "git",
