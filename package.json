@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "Youtube - Mango - NodeJs, TDD e Clean Architecture",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "jest"
+  },
+  "standard": {
+    "env": ["jest"]
   },
   "repository": {
     "type": "git",
@@ -22,5 +26,9 @@
     "jest": "^27.5.1",
     "lint-staged": "^12.3.5",
     "standard": "^16.0.4"
+  },
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongoose": "^6.2.5"
   }
 }
